@@ -31,9 +31,9 @@
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
 
-(function(){
+//(function(){
 
-    var root = this;
+//    var root = this;
 
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -9106,28 +9106,28 @@ Object.defineProperty(PIXI.TilingSprite.prototype, 'height', {
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
 
-    if (typeof exports !== 'undefined') {
-        if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = PIXI;
-        }
-        exports.PIXI = PIXI;
-    } else if (typeof define !== 'undefined' && define.amd) {
-        define('PIXI', (function() { return root.PIXI = PIXI; })() );
-    } else {
-        root.PIXI = PIXI;
-    }
+    // if (typeof exports !== 'undefined') {
+    //     if (typeof module !== 'undefined' && module.exports) {
+    //         exports = module.exports = PIXI;
+    //     }
+    //     exports.PIXI = PIXI;
+    // } else if (typeof define !== 'undefined' && define.amd) {
+    //     define('PIXI', (function() { return root.PIXI = PIXI; })() );
+    // } else {
+    //     root.PIXI = PIXI;
+    // }
 
-    return PIXI;
-}).call(this);
+//    return PIXI;
+//}).call(this);
 /**
 * @author       Richard Davey <rich@photonstorm.com>
 * @copyright    2016 Photon Storm Ltd.
 * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
-(function(){
+//(function(){
 
-    var root = this;
+//    var root = this;
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>
@@ -22491,7 +22491,11 @@ Phaser.Game.prototype = {
         }
         else if (window['console'])
         {
-            console.log('Phaser v' + v + ' | Pixi.js ' + PIXI.VERSION + ' | ' + r + ' | ' + a + ' | http://phaser.io');
+            console.log('Phaser v' + v + ' | Pixi.js ' + PIXI.VERSION + ' | ' + r + ' | ' + a + ' | https://www.phaser-china.com/');
+            // add some advertise
+            console.log('亲爱的微信小游戏开发者，您好！');
+            console.log('phaser-wx.js是由Phaser小站维护的一个兼容微信小游戏的Phaser版本，我们在原生 Phaser 2.6.2 的基础上进行了一些修改，让您更加方便地集成进微信小游戏。');
+            console.log('更多信息，请关注Phaser小站，https://www.phaser-china.com/');
         }
 
     },
@@ -22524,7 +22528,8 @@ Phaser.Game.prototype = {
 
         if (this.renderType === Phaser.HEADLESS || this.renderType === Phaser.CANVAS || (this.renderType === Phaser.AUTO && !this.device.webGL))
         {
-            if (this.device.canvas)
+            // always true for wxgame
+            if (this.device.canvas = true)
             {
                 //  They requested Canvas and their browser supports it
                 this.renderType = Phaser.CANVAS;
@@ -65404,7 +65409,8 @@ Phaser.ScaleManager.prototype = {
 
         if (scrollTo)
         {
-            window.scrollTo(scrollTo.x, scrollTo.y);
+            // window.scrollTo(scrollTo.x, scrollTo.y);
+            console.warn("window.scrollTo not available in wxgame");
         }
 
     },
@@ -67432,10 +67438,10 @@ Phaser.DOM = {
 
         var box = element.getBoundingClientRect();
 
-        var scrollTop = Phaser.DOM.scrollY;
-        var scrollLeft = Phaser.DOM.scrollX;
-        var clientTop = document.documentElement.clientTop;
-        var clientLeft = document.documentElement.clientLeft;
+        var scrollTop = Phaser.DOM.scrollY || 0;
+        var scrollLeft = Phaser.DOM.scrollX || 0;
+        var clientTop = document.documentElement.clientTop || 0;
+        var clientLeft = document.documentElement.clientLeft || 0;
 
         point.x = box.left + scrollLeft - clientLeft;
         point.y = box.top + scrollTop - clientTop;
@@ -84003,19 +84009,21 @@ PIXI.TextureSilentFail = true;
 * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
 */
 
-    if (typeof exports !== 'undefined') {
-        if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = Phaser;
-        }
-        exports.Phaser = Phaser;
-    } else if (typeof define !== 'undefined' && define.amd) {
-        define('Phaser', (function() { return root.Phaser = Phaser; })() );
-    } else {
-        root.Phaser = Phaser;
-    }
+    // if (typeof exports !== 'undefined') {
+    //     if (typeof module !== 'undefined' && module.exports) {
+    //         exports = module.exports = Phaser;
+    //     }
+    //     exports.Phaser = Phaser;
+    // } else if (typeof define !== 'undefined' && define.amd) {
+    //     define('Phaser', (function() { return root.Phaser = Phaser; })() );
+    // } else {
+    //     root.Phaser = Phaser;
+    // }
 
-    return Phaser;
-}).call(this);
+//     return Phaser;
+// }).call(this);
+
+module.exports = Phaser;
 
 /*
 * "What matters in this life is not what we do but what we do for others, the legacy we leave and the imprint we make." - Eric Meyer
