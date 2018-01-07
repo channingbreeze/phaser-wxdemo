@@ -1,3 +1,5 @@
 # phaser-wxdemo
 
-一个非常干净的工程
+基于arcadephysics编译出来的phaser
+
+
