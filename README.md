@@ -6,3 +6,5 @@
 * PIXI not defined
 * canvas的指定
 * touch事件问题
+
+增加了飞机大战demo
