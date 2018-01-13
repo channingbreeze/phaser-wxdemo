@@ -94,7 +94,7 @@ export default class GameState extends Phaser.State {
     	bullet.reset(this.hero.x, this.hero.y);
     	bullet.body.velocity.y = -600;
     } else {
-    	bullet = this.bulletGroup.create(this.randomEnemyX(), 79 * 0.5, 'bullet');
+    	bullet = this.bulletGroup.create(this.hero.x, this.hero.y, 'bullet');
     	bullet.outOfBoundsKill = true;
     	bullet.checkWorldBounds = true;
     	bullet.anchor.setTo(0.5, 0.5);
