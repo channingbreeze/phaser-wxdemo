@@ -62276,6 +62276,12 @@ Phaser.Sound = function (game, key, volume, loop, connect) {
             {
                 this.totalDuration = this._sound.duration;
             }
+            else
+            {
+                if(typeof(loop) === "object") {
+                    this.totalDuration = loop.totalDuration;
+                }
+            }
         }
         else
         {
@@ -62762,16 +62768,20 @@ Phaser.Sound.prototype = {
         {
             if (this.game.cache.getSound(this.key) && this.game.cache.getSound(this.key).locked)
             {
-                this.game.cache.reloadSound(this.key);
+                // this.game.cache.reloadSound(this.key);
+
+                this.game.cache.getSound(this.key).locked = false;
+                this.game.cache.onSoundUnlock.dispatch(key);
+
                 this.pendingPlayback = true;
             }
-            else
+            // else
             {
-                if (this._sound && (this.game.device.cocoonJS || this._sound.readyState === 4))
+                if (this._sound && !this.paused)
                 {
                     this._sound.play();
                     //  This doesn't become available until you call play(), wonderful ...
-                    this.totalDuration = this._sound.duration;
+                    this.totalDuration = this._sound.duration || this.totalDuration || undefined;
 
                     if (this.duration === 0)
                     {

@@ -15,9 +15,16 @@ export default class GameState extends Phaser.State {
 		this.game.load.spritesheet('explosion', 'images/explosion.png', 47, 64, 19);
 		this.game.load.image('bullet', 'images/bullet.png');
 		this.game.load.atlas('common', 'images/common.png', null, Common);
+
+		this.game.load.audio('bgm', 'audio/bgm.mp3');
+		this.game.load.audio('boom', 'audio/boom.mp3');
+		this.game.load.audio('bullet', 'audio/bullet.mp3');
 	}
 
 	create() {
+		// invalid sound lock
+		this.game.sound.touchLocked = false;
+		
 		this.game.state.start('game');
 	}
 

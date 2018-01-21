@@ -54,6 +54,13 @@ export default class GameState extends Phaser.State {
     	this.shoot();
     }, this);
 
+    // 声音，如果要用循环，需要给定totalDuration的值，音频长度
+    this.soundBgm = this.game.add.audio('bgm', 1, {loop: true, totalDuration: 62});
+    this.soundBgm.play();
+
+    this.soundBullet = this.game.add.audio('bullet');
+    this.soundBoom = this.game.add.audio('boom');
+
 	}
 
 	update() {
@@ -70,7 +77,6 @@ export default class GameState extends Phaser.State {
 	}
 
 	generateOneEnemy() {
-		// console.log(this.enemyGroup.length);
 
 		var enemy = this.enemyGroup.getFirstExists(false);
     if(enemy) {
@@ -84,10 +90,10 @@ export default class GameState extends Phaser.State {
     	enemy.scale.setTo(0.7, 0.7);
     	enemy.body.velocity.y = 200;
     }
+
 	}
 
 	shoot() {
-		// console.log(this.bulletGroup.length);
 
 		var bullet = this.bulletGroup.getFirstExists(false);
     if(bullet) {
@@ -101,6 +107,8 @@ export default class GameState extends Phaser.State {
     	bullet.scale.setTo(0.4, 0.4);
     	bullet.body.velocity.y = -600;
     }
+
+    this.soundBullet.play();
 
 	}
 
@@ -129,6 +137,8 @@ export default class GameState extends Phaser.State {
     anim.onComplete.add(function() {
     	explosion.kill();
     }, this);
+
+    this.soundBoom.play();
 	}
 
 	stopAll() {
@@ -137,6 +147,8 @@ export default class GameState extends Phaser.State {
 		this.game.time.events.remove(this.enemyTimer);
 		this.game.time.events.remove(this.bulletTimer);
 		this.bg.stopScroll();
+    this.hero.input.disableDrag();
+    this.soundBgm.stop();
 	}
 
 	gameOver() {

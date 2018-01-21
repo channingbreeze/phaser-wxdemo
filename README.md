@@ -6,5 +6,7 @@
 * PIXI not defined
 * canvas的指定
 * touch事件问题
+* 音频播放问题
+* atlas文件加载
 
-增加了飞机大战demo
+飞机大战demo完工
