@@ -9,4 +9,8 @@
 * 音频播放问题
 * atlas文件加载
 
-飞机大战demo完工
+飞机大战demo完工，源码目录：js/plane
+
+完成了demo展示的基本框架
+
+中文插件移植完工，源码目录：js/plugins/ChineseTextPlugin.js(delay)

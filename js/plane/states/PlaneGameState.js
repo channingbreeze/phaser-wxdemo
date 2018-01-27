@@ -1,4 +1,4 @@
-import Phaser from '../libs/phaser-wx.js'
+import Phaser from '../../libs/phaser-wx.js'
 
 export default class GameState extends Phaser.State {
 
@@ -159,22 +159,22 @@ export default class GameState extends Phaser.State {
 		// 文字
     var style = {font: "16px", fill: "#ffffff"};
     // 游戏结束
-    var gameOverText = this.game.add.text(4, -35, '游戏结束', style);
+    var gameOverText = this.game.add.text(2, -35, '游戏结束', style);
     gameOverText.anchor.setTo(0.5, 0.5);
     gameOverText.scale.setTo(0.7, 0.7);
     dialog.addChild(gameOverText);
 
-    var gameOverScoreText = this.game.add.text(4, -8, '得分: ' + this.score, style);
+    var gameOverScoreText = this.game.add.text(0, -8, '得分: ' + this.score, style);
     gameOverScoreText.anchor.setTo(0.5, 0.5);
     gameOverScoreText.scale.setTo(0.6, 0.6);
     dialog.addChild(gameOverScoreText);
 
-    var restartButton = this.game.add.sprite(4, 16, 'common', 'button');
+    var restartButton = this.game.add.sprite(0, 16, 'common', 'button');
     restartButton.anchor.setTo(0.5, 0.5);
     restartButton.scale.setTo(1.2, 0.7);
     dialog.addChild(restartButton);
 
-    var restartText = this.game.add.text(0, 2, '重新开始', style);
+    var restartText = this.game.add.text(0, 2, '返回', style);
     restartText.anchor.setTo(0.5, 0.5);
     restartText.scale.setTo(0.55/1.2, 0.55/0.7);
     restartButton.addChild(restartText);
@@ -185,7 +185,7 @@ export default class GameState extends Phaser.State {
 	}
 
 	restart() {
-		this.game.state.start('game');
+		this.game.state.start('menu');
 	}
 
 }
