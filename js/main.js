@@ -1,4 +1,5 @@
 import Phaser from 'libs/phaser-wx.js'
+
 import BootState from 'states/BootState.js'
 import PreloadState from 'states/PreloadState.js'
 import AnimationState from 'states/AnimationState.js'
