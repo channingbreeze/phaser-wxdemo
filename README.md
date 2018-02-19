@@ -12,5 +12,6 @@
 飞机大战demo完工，源码目录：js/plane
 
 完成了demo展示的基本框架
+完成了主菜单和子菜单的功能
 
-中文插件移植完工，源码目录：js/plugins/ChineseTextPlugin.js(delay)
+中文插件移植完工，源码目录：js/plugins/ChineseTextPlugin.js

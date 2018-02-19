@@ -1,6 +1,7 @@
 import Phaser from '../libs/phaser-wx.js';
+import BackToMenuState from '../base/BackToMenuState.js';
 
-export default class BasicLoadAnImageState extends Phaser.State {
+export default class BasicLoadAnImageState extends BackToMenuState {
 	
 	constructor(game) {
 		super();
@@ -13,15 +14,10 @@ export default class BasicLoadAnImageState extends Phaser.State {
 	}
 
 	create() {
-		// 在(0,0)位置显示该图片
-    this.game.add.sprite(0, 0, 'einstein');
-
-    // tap屏幕的时候，回到menu
-    this.game.input.onTap.add(this.onTap, this);
-	}
-
-	onTap() {
-		this.game.state.start('menu');
+    super.create();
+    
+		// 在(100, 100)位置显示该图片
+    this.game.add.sprite(100, 100, 'einstein');
 	}
 
 }

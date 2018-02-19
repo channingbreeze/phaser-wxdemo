@@ -14,7 +14,7 @@ export default class BootState extends Phaser.State {
 		// invalid sound lock
 		this.game.sound.touchLocked = false;
 		
-		this.game.state.start('animation');
+		this.game.state.start('preload');
 	}
 
 }

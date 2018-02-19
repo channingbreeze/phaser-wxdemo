@@ -1,3 +1,5 @@
+import Phaser from '../libs/phaser-wx.js';
+
 Phaser.Plugin.ChineseTextPlugin = function(game, parent) {
   Phaser.Plugin.call(this, game, parent);
 }
@@ -16,7 +18,6 @@ Phaser.Plugin.ChineseTextPlugin.prototype.forceWrap = function(x, y, str, style)
     var i = 0, j = 0;
     while(i < str.length) {
       tmp.text = str.substring(j, i);
-      console.log(j, i, tmp.width);
       if(tmp.width > style.wordWrapWidth) {
         newStr += str.substring(j, i - 1);
         newStr += " ";
@@ -27,7 +28,6 @@ Phaser.Plugin.ChineseTextPlugin.prototype.forceWrap = function(x, y, str, style)
       }
     }
     newStr += str.substring(j, str.length);
-    console.log(newStr);
     tmp.destroy();
   } else {
     newStr = str;
@@ -37,3 +37,6 @@ Phaser.Plugin.ChineseTextPlugin.prototype.forceWrap = function(x, y, str, style)
   return text;
   
 }
+
+export default Phaser.Plugin.ChineseTextPlugin;
+
