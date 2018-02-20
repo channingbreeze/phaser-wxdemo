@@ -31,5 +31,14 @@ export default class Arrow extends Phaser.Sprite {
 
   }
 
+  showAndHide(show) {
+    if(show) {
+      this.inputEnabled = true;
+      this.alpha = 1;
+    } else {
+      this.inputEnabled = false;
+      this.alpha = 0;
+    }
+  }
 
 }

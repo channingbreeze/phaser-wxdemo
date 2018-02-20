@@ -1,11 +1,15 @@
 import Phaser from '../libs/phaser-wx.js';
-import BackToMenuState from '../base/BackToMenuState.js';
+import BackToSubMenuState from '../base/BackToSubMenuState.js';
 
-export default class BasicClickOnAnImageState extends BackToMenuState {
+export default class BasicClickOnAnImageState extends BackToSubMenuState {
   
   constructor(game) {
     super();
     this.game = game;
+  }
+
+  init(key) {
+    super.init(key);
   }
 
   preload() {

@@ -1,12 +1,16 @@
 import Phaser from '../libs/phaser-wx.js';
-import BackToMenuState from '../base/BackToMenuState.js';
+import BackToSubMenuState from '../base/BackToSubMenuState.js';
 
-export default class BasicLoadAnImageState extends BackToMenuState {
+export default class BasicLoadAnImageState extends BackToSubMenuState {
 	
 	constructor(game) {
 		super();
 		this.game = game;
 	}
+
+  init(key) {
+    super.init(key);
+  }
 
 	preload() {
 		// 加载一个图片，之后可通过 einstein 来引用

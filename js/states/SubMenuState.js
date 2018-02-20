@@ -11,6 +11,7 @@ export default class SubMenuState extends BackToMenuState {
   }
 
   init(properties) {
+    this.key = properties.key;
     this.name = properties.name;
     this.list = properties.children;
   }
@@ -22,7 +23,7 @@ export default class SubMenuState extends BackToMenuState {
     this.caseGroup = this.game.add.group();
     for(var i=0; i<this.list.length; i++) {
       var caseRect = new CaseRect(this.game, this.game.width / 2, 80 + i * 34, this.list[i]);
-      caseRect.addClick(this.clickRect, {state: this, properties: this.list[i]});
+      caseRect.addClick(this.clickRect, {state: this, properties: this.list[i], key: this.key});
       this.caseGroup.add(caseRect);
     }
     this.pageSize = 16;
@@ -41,6 +42,7 @@ export default class SubMenuState extends BackToMenuState {
     this.arrowUp.addClick(this.clickArrow, {state: this, dir: 'up'});
     this.arrowDown.addClick(this.clickArrow, {state: this, dir: 'down'});
 
+    this.changeArrow(this.curPage);
   }
 
   clickArrow() {
@@ -49,19 +51,21 @@ export default class SubMenuState extends BackToMenuState {
         this.state.disablePageInput(this.state.curPage);
         this.state.curPage--;
         this.state.enablePageInput(this.state.curPage);
+        this.changeArrow(this.curPage);
       }
     } else {
       if(this.state.curPage < this.state.maxPageSize) {
         this.state.disablePageInput(this.state.curPage);
         this.state.curPage++;
         this.state.enablePageInput(this.state.curPage);
+        this.changeArrow(this.curPage);
       }
     }
     this.state.game.add.tween(this.state.caseGroup).to({y: - (this.state.curPage - 1) * 544}, 200, "Linear", true);
   }
 
   clickRect() {
-    this.state.game.state.start(this.properties.state);
+    this.state.game.state.start(this.properties.state, true, false, this.key);
   }
 
   enablePageInput(pageNum) {
@@ -75,6 +79,19 @@ export default class SubMenuState extends BackToMenuState {
   changePageInput(pageNum, enabled) {
     for(var i = (pageNum - 1) * this.pageSize; i < pageNum * this.pageSize && i < this.caseGroup.length; i++) {
       this.caseGroup.getChildAt(i).inputEnabled = enabled;
+    }
+  }
+
+  changeArrow(pageNum) {
+    if(pageNum <= 1) {
+      this.arrowUp.showAndHide(false);
+    } else {
+      this.arrowUp.showAndHide(true);
+    }
+    if(pageNum >= this.maxPageSize) {
+      this.arrowDown.showAndHide(false);
+    } else {
+      this.arrowDown.showAndHide(true);
     }
   }
 

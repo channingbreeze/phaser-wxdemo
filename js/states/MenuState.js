@@ -36,6 +36,8 @@ export default class MenuState extends Phaser.State {
 		this.arrowLeft.addClick(this.clickArrow, {state: this, dir: 'left'});
 		this.arrowRight.addClick(this.clickArrow, {state: this, dir: 'right'});
 
+		this.changeArrow(this.curPage);
+
 	}
 
 	clickArrow() {
@@ -44,12 +46,14 @@ export default class MenuState extends Phaser.State {
 				this.state.disablePageInput(this.state.curPage);
 				this.state.curPage--;
 				this.state.enablePageInput(this.state.curPage);
+				this.changeArrow(this.curPage);
 			}
 		} else {
 			if(this.state.curPage < this.state.maxPageSize) {
 				this.state.disablePageInput(this.state.curPage);
 				this.state.curPage++;
 				this.state.enablePageInput(this.state.curPage);
+				this.changeArrow(this.curPage);
 			}
 		}
 		this.state.game.add.tween(this.state.exampleGroup).to({x: - (this.state.curPage - 1) * 252}, 200, "Linear", true);
@@ -70,6 +74,19 @@ export default class MenuState extends Phaser.State {
 	changePageInput(pageNum, enabled) {
 		for(var i = (pageNum - 1) * this.pageSize; i < pageNum * this.pageSize && i < this.exampleGroup.length; i++) {
 			this.exampleGroup.getChildAt(i).inputEnabled = enabled;
+		}
+	}
+
+	changeArrow(pageNum) {
+		if(pageNum <= 1) {
+			this.arrowLeft.showAndHide(false);
+		} else {
+			this.arrowLeft.showAndHide(true);
+		}
+		if(pageNum >= this.maxPageSize) {
+			this.arrowRight.showAndHide(false);
+		} else {
+			this.arrowRight.showAndHide(true);
 		}
 	}
 
