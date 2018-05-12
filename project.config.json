@@ -9,9 +9,9 @@
 	},
 	"compileType": "game",
 	"libVersion": "game",
-	"appid": "touristappid",
+	"appid": "wxb11b771731e848ed",
 	"projectname": "phaser-wx",
-	"isGameTourist": true,
+	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,
