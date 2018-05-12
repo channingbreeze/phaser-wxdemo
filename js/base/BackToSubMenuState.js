@@ -24,6 +24,7 @@ export default class BackToSubMenuState extends Phaser.State {
   }
 
   backToMenu() {
+    this.game.renderType = Phaser.CANVAS;
     this.game.state.start('submenu', true, false, this.map[this.key]);
   }
 

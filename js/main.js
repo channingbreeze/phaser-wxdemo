@@ -8,6 +8,10 @@ import SubMenuState from 'states/SubMenuState.js'
 
 import BasicExamples from 'basic/index.js';
 import GameExamples from 'game/index.js';
+import OpenExamples from 'open/index.js';
+
+// 保存原始的canvas
+wx.originContext = canvas.getContext('2d');
 
 var game = new Phaser.Game({
   width: 375,
@@ -24,5 +28,6 @@ game.state.add('submenu', new SubMenuState(game));
 
 new BasicExamples(game);
 new GameExamples(game);
+new OpenExamples(game);
 
 game.state.start('boot');

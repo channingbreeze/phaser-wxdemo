@@ -42,6 +42,28 @@ var examples = [
 				state: 'planePreload'
 			}
 		]
+	},
+	{
+		key: 'open',
+		name: '开放域',
+		children: [
+			{
+				name: 'show open canvas',
+				state: 'openShowOpenCanvas'
+			},
+			{
+				name: 'set your score',
+				state: 'openSetCloudScore'
+			},
+			{
+				name: 'get your score',
+				state: 'openGetCloudScore'
+			},
+			{
+				name: 'get friend score',
+				state: 'openGetFriendCloudScore'
+			}
+		]
 	}
 ];
 
