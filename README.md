@@ -15,5 +15,6 @@
 完成了主菜单和子菜单的功能
 
 basic移植完毕
+开放域相关功能完毕
 
 中文插件移植完工，源码目录：js/plugins/ChineseTextPlugin.js
