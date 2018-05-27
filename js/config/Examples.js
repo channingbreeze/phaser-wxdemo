@@ -62,6 +62,10 @@ var examples = [
 			{
 				name: 'get friend score',
 				state: 'openGetFriendCloudScore'
+			},
+			{
+				name: 'show ranking list',
+				state: 'openShowRankingList'
 			}
 		]
 	}

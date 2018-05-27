@@ -1,7 +1,7 @@
 import Phaser from '../libs/phaser-wx.js';
 import BackToSubMenuState from '../base/BackToSubMenuState.js';
 
-export default class OpenShowOpenCanvasState extends BackToSubMenuState {
+export default class OpenShowRankingListState extends BackToSubMenuState {
   
   constructor(game) {
     super();
@@ -17,8 +17,11 @@ export default class OpenShowOpenCanvasState extends BackToSubMenuState {
 
   create() {
     super.create();
+
+    this.openDataContext = wx.getOpenDataContext();
+    this.sharedCanvas = this.openDataContext.canvas;
     
-    var text = "open canvas";
+    var text = "show ranking list";
     // 文字样式
     var style = { font: "32px Arial", fill: "#ff0044", align: "center" };
     // 显示文字
@@ -30,12 +33,23 @@ export default class OpenShowOpenCanvasState extends BackToSubMenuState {
 
   }
 
-  listener() {
+  update() {
+    if(this.game.renderType === Phaser.HEADLESS) {
 
+      wx.originContext.drawImage(this.sharedCanvas, 0, 0, 375, 667)
+    }
+  }
+
+  listener() {
+    
     var openDataContext = wx.getOpenDataContext();
     var sharedCanvas = openDataContext.canvas;
 
     var openCanvas = this.game.add.sprite(0, 100, Phaser.XTexture(sharedCanvas, 0, 0, 375, 667));
+
+    this.openDataContext.postMessage({
+      action: 'SHOW_RANKING_LIST'
+    });
 
   }
 
